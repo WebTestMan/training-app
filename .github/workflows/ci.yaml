@@ -33,7 +33,7 @@ jobs:
         run: podman build -t flask-app .
 
       - name: Run Flask container
-        run: podman run --name flask-test -d -p 5001:5001 flask-app
+        run: podman run --name flask-test -d -p 5000:5000 flask-app
 
       - name: Wait for Flask to be ready
         run: |
@@ -74,7 +74,7 @@ jobs:
         run: |
           oc project $PROJECT_NAME
           oc delete pod flask-app --ignore-not-found=true
-          oc run flask-app --image ghcr.io/${{ github.repository_owner }}/training-app:latest --port 5000 --port 5000
+          oc run flask-app --image ghcr.io/andrewclevelandibm/training-app:latest --port 5000 --port 5000
  
       - name: Teardown container
         if: always()
