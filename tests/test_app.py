@@ -1,7 +1,7 @@
 import requests
 import time
 
-BASE_URL = 'http://localhost:5001'
+BASE_URL = 'http://localhost:5000'
 
 # Wait briefly for the containerized app to start up
 def wait_for_app(timeout=10):
