@@ -26,12 +26,12 @@ jobs:
         run: podman build -t flask-app .
 
       - name: Run Flask container
-        run: podman run --name flask-test -d -p 5000:5000 flask-app
+        run: podman run --name flask-test -d -p 5001:5001 flask-app
 
       - name: Wait for Flask to be ready
         run: |
           for i in {1..10}; do
-            if curl --silent --fail http://localhost:5000/; then
+            if curl --silent --fail http://localhost:5001/; then
               echo "Flask is up!"
               break
             fi
