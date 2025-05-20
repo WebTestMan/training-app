@@ -67,6 +67,7 @@ jobs:
           OPENSHIFT_SERVER_URL: ${{ secrets.OPENSHIFT_SERVER_URL }}
         run: |
           oc login --token=$OPENSHIFT_API_TOKEN --server=$OPENSHIFT_SERVER_URL
+          
       - name: Select project and deploy pod
         env:
           PROJECT_NAME: markgh
