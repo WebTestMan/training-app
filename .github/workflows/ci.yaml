@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ '**' ]
+    branches: ["**"]
 
 jobs:
   test:
@@ -15,7 +15,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: "3.9"
 
       - name: Install dependencies
         run: |
@@ -39,9 +39,11 @@ jobs:
             sleep 1
           done
 
+      - name: Run API tests
+        run: pytest tests/test_app.py -v
+
       - name: Teardown container
         if: always()
         run: |
           podman stop flask-test
           podman rm flask-test
-
